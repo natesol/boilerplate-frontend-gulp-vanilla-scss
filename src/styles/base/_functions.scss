@@ -1,0 +1,41 @@
+/* ------------------------------------------------------------------------------------------------ */
+/* --- SCSS Functions ----------------------------------------------------------------------------- */
+
+/* --- Google Fonts SCSS Mixin v.2.0.0 --------------- */
+/**
+ * (https://codepen.io/jakob-e/pen/LVVXjO)
+ *  Google Fonts SCSS Mixin - Helper Functions.
+**/
+@function __gf__list-unique($list) {
+    $result: ();
+    @each $item in $list {
+        @if not index($result, $item + '') {
+            $result: append($result, $item + '');
+        }
+    }
+    @each $item in $result {
+        $result: set-nth($result, index($result, $item), unquote($item));
+    }
+    @return $result;
+}
+@function __gf__str-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search);
+    @return if(
+        $index,
+        str-slice($string, 1, $index - 1) + $replace +
+            __gf__str-replace(str-slice($string, $index + str-length($search)), $search, $replace),
+        $string
+    );
+}
+@function __gf__str-explode($string) {
+    $list: ();
+    @for $i from 1 through str-length($string) {
+        $list: append($list, str-slice($string, $i, $i));
+    }
+    @return $list;
+}
+
+
+
+/* ------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------ */

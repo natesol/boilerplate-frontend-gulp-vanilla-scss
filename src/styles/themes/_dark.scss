@@ -1,0 +1,51 @@
+/* ------------------------------------------------------------------------------------------------ */
+/* --- Dark Theme Styles -------------------------------------------------------------------------- */
+
+
+:root[theme="dim"],
+:root[theme="dark"] {
+    /* */
+    color-scheme: dark;
+
+    /* Colors In Use ------------------ */
+    --success:   var(--emerald);
+    --info:      var(--ocean);
+    --warning:   var(--amber);
+    --danger:    var(--rose);
+    
+    --primary:   var(--aqua);
+    --secondary: var(--indigo);
+    --accent:    var(--gold);
+    
+    --gradient-p-a: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+
+    /*  */
+    --shadow-c: rgb(0 0 0 / 0.3);
+
+    --body-bg-c: var(--gray-09);
+    --body-bg-h: var(--gray-08);
+    --body-txt-c: var(--gray-01);
+
+    --sheet-bg-c: var(--gray-08);
+    --sheet-txt-c: var(--gray-01);
+
+    --title-c: var(--primary);
+
+    --btn-txt-c: var(--black);
+    --btn-bg-c: var(--gradient-p-a);
+    
+    
+    
+    img {
+        filter: grayscale(0.3);
+
+        &:hover {
+            filter: grayscale(0);
+        }
+    }
+}
+
+
+
+/* ------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------ */

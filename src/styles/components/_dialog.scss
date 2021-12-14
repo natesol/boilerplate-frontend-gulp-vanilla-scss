@@ -1,0 +1,74 @@
+/* ------------------------------------------------------------------------------------------------ */
+/* --- App Base Styles ---------------------------------------------------------------------------- */
+
+
+#dialog-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+
+    background: rgb(11 19 34 / 70%);
+    
+    z-index: $layer-fronter;
+    display: none;
+    opacity: 0;
+
+    transition: opacity $animation-speed-slow $animation-function;
+}
+
+.dialog-box {
+    overflow: hidden;
+    
+    max-width: 30rem;
+    width: 90%;
+    max-height: 80%;
+    
+    padding-bottom: 1.4rem;
+
+    border: none;
+    border-radius: $radius-large;
+
+    background-color: $menu-bg-color;
+    color: $menu-txt-color;
+
+    box-shadow: $shadow-light;
+
+    transition: all $animation-speed-slow $animation-function;
+
+    header i {
+        cursor: pointer;
+    
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    
+        font-size: 1.2rem;
+    }
+}
+
+.dialog-title {
+    color: $menu-txt-highlight-color;
+    font-family: $fontFamily-titles;
+    text-transform: capitalize;
+    margin-top: 0.4rem;
+}
+
+.dialog-body {
+
+}
+
+.dialog-action {
+
+}
+
+
+/* ------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------ */

@@ -1,0 +1,44 @@
+/* ------------------------------------------------------------------------------------------------ */
+/* --- Utilities ---------------------------------------------------------------------------------- */
+
+.container {
+    max-width: 1000px;
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1rem;
+    // text-align: center;
+}
+
+.clickable {
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.015);
+    }
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+.title {
+    background: var(--gradient-p-a);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-family: var(--ff-title);
+    font-size: 2.2rem;
+    font-weight: 900;
+    display: inline-block;
+}
+.title * {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    margin: 0;
+}
+
+
+
+
+/* ------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------ */

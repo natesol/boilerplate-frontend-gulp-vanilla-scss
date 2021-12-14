@@ -1,0 +1,99 @@
+/* ------------------------------------------------------------------------------------------------ */
+/* --- Global Styles ------------------------------------------------------------------------------ */
+
+
+/* --- Pseudo Classes & Elements --------------------- */
+
+*,
+::after,
+::before {
+    transition: $theme-change-transition;
+}
+
+// .no-focus {
+//     -webkit-tap-highlight-color: transparent;
+//     -webkit-touch-callout: none;
+//     -webkit-user-select: none;
+//     -khtml-user-select: none;
+//     -moz-user-select: none;
+//     -ms-user-select: none;
+//     user-select: none;
+// }
+// .no-focus:focus {
+//     outline: none !important;
+// }
+:focus,
+:active {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+::selection {
+    background-color: $color-primary-dark;
+    color: #fff;
+}
+::selection {
+    background-color: var(--secondary);
+    color: #fff;
+}
+
+
+
+/* --- Document Level Elements ----------------------- */
+
+// html {
+//     font-size: 16px;
+// }
+// @media screen and (max-width: 500px) {
+//     html { font-size: 15px }
+// }
+// @media screen and (max-width: 400px) {
+//     html { font-size: 14px }
+// }
+html {
+    @include break-point ($ultra-wide...) {
+        font-size: 20px;
+    }
+    @include break-point ($wide...) {
+        font-size: 18px;
+    }
+    @include break-point ($desktop...) {
+        font-size: 16px;
+    }
+    @include break-point ($tablet...) {
+        font-size: 14px;
+    }
+    @include break-point ($phone...) {
+        font-size: 13px;
+    }
+}
+
+body {
+    position: relative;
+    max-width: 1440px;
+    margin: auto;
+
+    font-family: $fontFamily-content;
+    background-color: $body-bg-color;
+    color: $body-txt-color;
+
+    @include break-point ($tablet...) {
+        width: calc(100vw - 1rem);
+    }
+}
+body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: var(--ff-body);
+    background-color: var(--body-bg-c);
+    color: var(--body-txt-c);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------ */

@@ -1,0 +1,123 @@
+/* ------------------------------------------------------------------------------------------------ */
+/* --- SCSS Variables ----------------------------------------------------------------------------- */
+
+
+/* Typology ----------------------- */
+$fontFamily-titles  : var(--ff-title);
+$fontFamily-content :  var(--ff-body);
+$fontFamily-extra   : var(--ff-extra);
+
+$fontWeight-light  : 300;
+$fontWeight-normal : 400;
+$fontWeight-bold   : 700;
+$fontWeight-black  : 900;
+
+/* Colors ------------------------- */
+$color-gray-00 : var(--gray-00);
+$color-gray-01 : var(--gray-01);
+$color-gray-02 : var(--gray-02);
+$color-gray-03 : var(--gray-03);
+$color-gray-04 : var(--gray-04);
+$color-gray-05 : var(--gray-05);
+$color-gray-06 : var(--gray-06);
+$color-gray-07 : var(--gray-07);
+$color-gray-08 : var(--gray-08);
+$color-gray-09 : var(--gray-09);
+$color-gray-10 : var(--gray-10);
+
+$color-white : var(--gray-00);
+$color-black : var(--gray-10);
+
+$color-green-light : var(--green-l);
+$color-green       : var(--green);
+$color-green-dark  : var(--green-d);
+
+$color-blue-light : var(--blue-l);
+$color-blue       : var(--blue);
+$color-blue-dark  : var(--blue-d);
+
+$color-primary-light : var(--prim-l);
+$color-primary       : var(--prim);
+$color-primary-dark  : var(--prim-d);
+
+$color-accent-light : var(--accent-l);
+$color-accent       : var(--accent);
+$color-accent-dark  : var(--accent-d);
+
+$gradient-primery-to-accent : var(--gradient-p-a);
+
+$scrollbar-track-color       : var(--sb-tr);
+$scrollbar-thumb-color       : var(--sb-th);
+$scrollbar-thumb-hover-color : var(--sb-th-h);
+
+$body-bg-color  : var(--body-bg-c);
+$body-txt-color : var(--body-txt-c);
+
+$resizer-size        : var(--resizer-size);
+$resizer-bg-color    : var(--resizer-bg-c);
+$resizer-arrow-size  : var(--resizer-a-size);
+$resizer-arrow-color : var(--resizer-a-c);
+
+$title-txt-color : var(--title-c);
+
+$menu-bg-color            : var(--menu-bg-c);
+$menu-bg-highlight-color  : var(--menu-bg-hl);
+$menu-txt-color           : var(--menu-txt-c);
+$menu-txt-highlight-color : var(--menu-txt-hl);
+
+$button-bg-color  : var(--btn-bg-c);
+$button-txt-color : var(--btn-txt-c);
+
+$tooltip-bg-color  : var(--tip-bg-c);
+$tooltip-txt-color : var(--tip-txt-c);
+
+$select-bg-color            : var(--menu-bg-c);
+$select-bg-highlight-color  : var(--menu-bg-hl);
+$select-txt-color           : var(--menu-txt-c);
+$select-txt-highlight-color : var(--menu-txt-hl);
+
+
+/* Radius Styles ------------------ */
+$shadow-light : var(--shadow-l);
+$shadow       : var(--shadow);
+$shadow-dark  : var(--shadow-d);
+
+
+/* Radius Styles ------------------ */
+$radius-small : var(--radius-s);
+$radius-large : var(--radius-l);
+
+
+/* General Animations & Effects --- */
+$animation-function   : var(--a-fn);
+$animation-speed-slow : var(--a-speed-s);
+// $animation-speed-slow : 1.6s;
+$animation-speed      : var(--a-speed);
+$animation-speed-fast : var(--a-speed-f);
+
+
+/* Theme Change Animation --------- */
+$theme-change-transition: var(--t-c-transition);
+
+
+// 'Layers' Managment For z-index -----
+$layer-behind: -1;
+$layer-background: 0;
+$layer-1: 1;
+$layer-2: 2;
+$layer-3: 3;
+$layer-foreground: 4;
+$layer-front: 1000;
+$layer-fronter: 1001;
+
+// View Port Break Points -------------
+// (Lists To Pass For The 'break-point' Mixin)
+$phone: below, 330px, width;
+$tablet: below, 420px, width;
+$desktop: below, 1024px, width;
+$wide: below, 1440px, width;
+$ultra-wide: above, 1441px, width;
+
+
+/* ------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------ */

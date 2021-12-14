@@ -1,0 +1,92 @@
+/* ------------------------------------------------------------------------------------------------ */
+/* --- App Base Styles ---------------------------------------------------------------------------- */
+
+
+.tooltip {
+    position: relative;
+
+    // &.clickable {
+    //     &:hover {
+    //         &::before {
+    //             transform: scale(0.9524);
+    //         }
+    //         &::after {
+    //             transform: rotate(45deg) scale(0.9524);
+    //         }
+    //     }
+    //     &:active {
+    //         &::before {
+    //             transform: scale(1.0527);
+    //         }
+    //         &::after {
+    //             transform: rotate(45deg) scale(1.0527);
+    //         }
+    //     }
+    // }
+
+    &::before {
+        content: var(--tip, "add a --tip property");
+        
+        position: absolute;
+        top: var(--tip-top, auto);
+        bottom: var(--tip-bottom, auto);
+        left: var(--tip-left, auto);
+        right: var(--tip-right, auto);
+        
+        text-transform: capitalize;
+        line-height: 1rem;
+        font-size: 0.7rem;
+        font-weight: 400;
+        font-family: $fontFamily-titles;
+        
+        padding: 0.4rem;
+    
+        display: flex;
+        text-align: center;
+        align-items: center;
+        
+        z-index: $layer-fronter;
+        
+        background-color: $tooltip-bg-color;
+        color: $tooltip-txt-color;
+        border-radius: $radius-small;
+        
+        pointer-events: none;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+
+    &::after {
+        content: "";
+    
+        position: absolute;
+        top: var(--tip-top, auto);
+        bottom: var(--tip-bottom, auto);
+        left: var(--tip-left, auto);
+        right: var(--tip-right, auto);
+        
+        transform: rotate(45deg);
+        width: 1rem;
+        height: 1rem;
+        
+        background-color: $tooltip-bg-color;
+        
+        pointer-events: none;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+
+    &:hover::before,
+    &:hover::after {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 50ms 1000ms ease-in-out;
+    }
+}
+
+
+
+/* ------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------ */

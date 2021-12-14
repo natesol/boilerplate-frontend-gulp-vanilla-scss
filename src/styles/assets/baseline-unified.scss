@@ -1,0 +1,811 @@
+/* -------------------------------------------------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------------------------------------- */
+/* -----  BaseLine - Unified.css -------------------------------------------------------------------------------------------------- */
+/*
+    ----
+    ----
+    ----
+    ----
+*/
+/* Document * ========================================================================== */
+/*
+info:
+    * By default, the initial 'box-sizing' is set to 'content-box'. It means that the width and height properties
+    do not include the padding and border, which makes positioning (very) problematic when you want to position elements
+    with some width and height values. To fix that, we'll set the property to 'border-box', so that the width and hight
+    won't be affected by 'padding' or 'border'.
+        - https://pressupinc.com/blog/2014/01/whats-wrong-css-box-model-fix/
+        - https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
+*
+rules:
+    1. Use only 'border-box' by default.
+        - Opinionated, Reset | for all browsers.
+*/
+*, ::before, ::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /* 1 */
+}
+
+/*
+    1. Correct the line height in all browsers.
+    2. Prevent adjustments of font size after orientation changes in iOS.
+    3. Use a more readable tab size (opinionated).
+*/
+html {
+  line-height: 1.5;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  -moz-tab-size: 4;
+    -o-tab-size: 4;
+       tab-size: 4;
+  /* 3 */
+}
+
+/*
+info:
+    asfasffaf asfafa afaf.
+        - https://www.thoughtco.com/css-zero-out-margins-3464247
+*
+rules:
+    1. Remove the default 'margin' and 'padding' from every relevant element.
+        - Reset | for all browsers.
+*/
+body {
+  min-height: 100%;
+  /* 1 */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Noto Sans", "Cantarell", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* Linux emoji */
+}
+
+/*
+info:
+    * Each browser applies different 'margin' and 'padding' defaults to different elements, and it is highly inconsistent.
+    Furthermore, in most cases, its easier for correct positioning and responsive positioning, to remove this properties
+    and apply them specifically only where they needed.
+        - https://www.thoughtco.com/css-zero-out-margins-3464247
+*
+rules:
+    1. Remove the default 'margin' and 'padding' from every relevant element.
+        - Reset | for all browsers.
+*/
+html, body,
+blockquote, pre,
+ol, ul, li, dl, dt, dd,
+thead, tbody, tfoot, th, tr, td,
+form, fieldset, legend, textarea,
+figure, iframe, menu {
+  margin: 0;
+  /* 1 */
+}
+
+html, body,
+thead, tbody, tfoot, th, tr, td,
+figure, iframe, menu {
+  padding: 0;
+  /* 1 */
+}
+
+/* Sections * ========================================================================== */
+/*
+    Correct the font size and margin on `h1` elements within `section` and
+    `article` contexts in Chrome, Edge, Firefox, and Safari.
+*/
+:where(h1) {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* @docs
+label: H1 Margins
+
+note: |
+Keep h1 margins consistent, even when nested.
+
+category: typography
+*/
+h1 {
+  margin: 0.67em 0;
+}
+
+/* @docs
+label: Heading Sizes
+
+note: |
+Switch to rem units for headings
+
+category: typography
+*/
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.17rem;
+}
+
+h4 {
+  font-size: 1.00rem;
+}
+
+h5 {
+  font-size: 0.83rem;
+}
+
+h6 {
+  font-size: 0.67rem;
+}
+
+/* Grouping content * ========================================================================== */
+/* @docs
+label: List Style
+
+note: |
+List styling is not usually desired in navigation,
+but this also removes list-semantics for screen-readers
+
+links:
+- https://github.com/mozdevs/cssremedy/issues/15
+
+category: navigation
+*/
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* @docs
+label: List Voiceover
+
+note: |
+    1. Add zero-width-space to prevent VoiceOver disable
+    2. Absolute position ensures no extra space
+
+links:
+    - https://unfetteredthoughts.net/2017/09/26/voiceover-and-list-style-type-none/
+
+category: navigation
+*/
+nav li:before {
+  content: "\200B";
+  position: absolute;
+}
+
+/*
+    1. Add the correct height in Firefox.
+    2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+*/
+hr {
+  height: 0;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+}
+
+/* @docs
+label: Horizontal Rule
+
+note: |
+1. Solid, thin horizontal rules
+2. Remove Firefox `color: gray`
+3. Remove default `1px` height, and common `overflow: hidden`
+
+category: typography
+*/
+hr {
+  border-style: solid;
+  border-width: 1px 0 0;
+  color: inherit;
+  height: 0;
+  overflow: visible;
+}
+
+/*
+    1. Correct the inheritance and scaling of font size in all browsers.
+    2. Correct the odd `em` font sizing in all browsers.
+*/
+:where(pre) {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/* @docs
+label: Pre Wrapping
+
+note: |
+Overflow by default is bad...
+
+category: typography
+*/
+pre {
+  white-space: pre-wrap;
+}
+
+/* Text-level semantics * ========================================================================== */
+/*
+    Add the correct text decoration in Safari.
+*/
+:where(abbr[title]) {
+  text-decoration: underline;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+    Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+abbr[title] {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+    Add the correct font weight in Chrome, Edge, and Safari.
+*/
+:where(b, strong) {
+  font-weight: bolder;
+}
+
+/*
+    Add the correct font weight in Edge and Safari.
+*/
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+    1. Correct the inheritance and scaling of font size in all browsers.
+    2. Correct the odd `em` font sizing in all browsers.
+*/
+:where(code, kbd, samp) {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/*
+info:
+    1. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
+    2. Correct the odd 'em' font sizing in all browsers.
+*
+rules:
+    1. Correct the inheritance and scaling of font size in all browsers.
+        - Reset | for all browsers.
+    2. Correct the odd `em` font sizing in all browsers.
+        - Reset | for all browsers.
+*/
+code, kbd, samp, pre {
+  font-size: 1em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, "Segoe UI Mono", "Consolas", "Roboto Mono", "Ubuntu Monospace", "Noto Mono", "Oxygen Mono", "Source Code Pro", "Liberation Mono", courier, monospace;
+  /* fallback */
+}
+
+/* @docs
+label: Pre Wrapping
+
+note: |
+Overflow by default is bad...
+
+category: typography
+*/
+pre {
+  white-space: pre-wrap;
+}
+
+/*
+    Add the correct font size in all browsers.
+*/
+:where(small) {
+  font-size: 80%;
+}
+
+/*
+    Add the correct font size in all browsers.
+*/
+small {
+  font-size: 80%;
+}
+
+/*
+    Prevent 'sub' and 'sup' elements from affecting the line height in all browsers.
+*/
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content * ========================================================================== */
+/* @docs
+label: Responsive Embeds
+
+note: |
+1. Block display is usually what we want
+2. The `vertical-align` removes strange space-below in case authors overwrite the display value
+3. Responsive by default
+4. Audio without `[controls]` remains hidden by default
+
+category: embedded elements
+*/
+img, svg, video, canvas, audio, iframe, embed, object {
+  display: block;
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+audio:not([controls]) {
+  display: none;
+}
+
+/* @docs
+label: Responsive Images
+
+note: |
+These new elements display inline by default,
+but that's not the expected behavior for either one.
+This can interfere with proper layout and aspect-ratio handling.
+
+1. Remove the unnecessary wrapping `picture`, while maintaining contents
+2. Source elements have nothing to display, so we hide them entirely
+
+category: embedded elements
+*/
+picture {
+  display: contents;
+}
+
+source {
+  display: none;
+}
+
+/* @docs
+label: Aspect Ratios
+
+note: |
+Maintain intrinsic aspect ratios when `max-width` is applied.
+`iframe`, `embed`, and `object` are also embedded,
+but have no intrinsic ratio,
+so their `height` needs to be set explicitly.
+
+category: embedded elements
+*/
+img, svg, video, canvas {
+  height: auto;
+}
+
+/* @docs
+label: Audio Width
+
+note: |
+There is no good reason elements default to 300px,
+and audio files are unlikely to come with a width attribute.
+
+category: embedded elements
+*/
+audio {
+  width: 100%;
+}
+
+/* @docs
+label: Image Borders
+
+note: |
+Remove the border on images inside links in IE 10 and earlier.
+
+category: legacy browsers
+*/
+img {
+  border-style: none;
+}
+
+/* @docs
+label: SVG Overflow
+
+note: |
+Hide the overflow in IE 10 and earlier.
+
+category: legacy browsers
+*/
+svg {
+  overflow: hidden;
+}
+
+iframe {
+  border: 0;
+}
+
+/* Tabular data * ========================================================================== */
+/*
+    1. Collapse border spacing in all browsers (opinionated).
+    2. Correct table border color inheritance in all Chrome, Edge, and Safari.
+    3. Remove text indentation from table contents in Chrome, Edge, and Safari.
+*/
+:where(table) {
+  border-collapse: collapse;
+  /* 1 */
+  border-color: inherit;
+  /* 2 */
+  text-indent: 0;
+  /* 3 */
+}
+
+/*
+    1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+    2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+*/
+table {
+  text-indent: 0;
+  /* 1 */
+  border-color: inherit;
+  /* 2 */
+}
+
+/* Forms * ========================================================================== */
+/*
+    1. Change the font styles in all browsers.
+    2. Remove the margin in Firefox and Safari.
+*/
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+
+/*
+    Don't show the arrow for multiple choice selects
+*/
+:where(select[multiple]) {
+  background-image: none;
+}
+
+/*
+    Remove the margin on controls in Safari.
+*/
+:where(button, input, select) {
+  margin: 0;
+}
+
+/**
+    Remove the inheritance of text transform in Edge and Firefox.
+*/
+button,
+select {
+  text-transform: none;
+}
+
+/* @docs
+label: Checkbox & Radio Inputs
+
+note: |
+1. Add the correct box sizing in IE 10
+2. Remove the padding in IE 10
+
+category: legacy browsers
+*/
+[type='checkbox'],
+[type='radio'] {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+}
+
+/*
+    Correct the inability to style buttons in iOS and Safari.
+*/
+:where(button, [type="button" i], [type="reset" i], [type="submit" i]) {
+  -webkit-appearance: button;
+}
+
+/*
+    Correct the inability to style clickable types in iOS and Safari.
+*/
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+}
+
+/*
+    Remove the padding so developers are not caught out when they zero out 'fieldset' elements in all browsers.
+*/
+legend {
+  padding: 0;
+}
+
+/*
+    Add the correct vertical alignment in Chrome, Edge, and Firefox.
+*/
+:where(progress) {
+  vertical-align: baseline;
+}
+
+/*
+    Add the correct vertical alignment in Chrome and Firefox.
+*/
+progress {
+  vertical-align: baseline;
+}
+
+/*
+    1. Remove the margin in Firefox and Safari.
+*/
+:where(textarea) {
+  margin: 0;
+  /* 1 */
+}
+
+/*
+    1. Correct the odd appearance in Chrome, Edge, and Safari.
+    2. Correct the outline style in Safari.
+*/
+:where([type="search" i]) {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/*
+    1. Correct the odd appearance in Chrome and Safari.
+    2. Correct the outline style in Safari.
+*/
+[type='search'] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/* @docs
+label: Checkbox & Radio Inputs
+
+note: |
+1. Add the correct box sizing in IE 10
+2. Remove the padding in IE 10
+
+category: legacy browsers
+*/
+[type='checkbox'],
+[type='radio'] {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+}
+
+/*
+    Remove the inner border and padding in Firefox.
+*/
+::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/*
+    Restore the focus styles unset by the previous rule.
+*/
+:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/*
+    Remove the additional ':invalid' styles in Firefox.
+    See: https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737
+*/
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+    Correct the cursor style of increment and decrement buttons in Safari.
+*/
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+    Correct the cursor style of increment and decrement buttons in Safari.
+*/
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+    Correct the text style of placeholders in Chrome, Edge, and Safari.
+*/
+::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 0.54;
+}
+
+/*
+    Remove the inner padding in Chrome, Edge, and Safari on macOS.
+*/
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+    Remove the inner padding in Chrome and Safari on macOS.
+*/
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+    1. Correct the inability to style upload buttons in iOS and Safari.
+    2. Change font properties to `inherit` in Safari.
+*/
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/*
+    1. Correct the inability to style clickable types in iOS and Safari.
+    2. Change font properties to 'inherit' in Safari.
+*/
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/* Interactive * ========================================================================== */
+/*
+    Add the correct styles in Safari.
+*/
+:where(dialog) {
+  background-color: white;
+  border: solid;
+  color: black;
+  height: -moz-fit-content;
+  height: -webkit-fit-content;
+  height: fit-content;
+  left: 0;
+  margin: auto;
+  padding: 1em;
+  position: absolute;
+  right: 0;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+}
+
+:where(dialog:not([open])) {
+  display: none;
+}
+
+/*
+    Add the correct display in Safari.
+*/
+:where(details > summary:first-of-type) {
+  display: list-item;
+}
+
+/*
+    Add the correct display in Chrome and Safari.
+*/
+summary {
+  display: list-item;
+}
+
+/* Accessibility ========================================================================== */
+/*
+info:
+    Modern sites are full of animations and transitions, but many users prefer not to see theme for personal
+    or medical reasons. For a better UX and Accessibility, we should respect the user preferences.
+*
+rules:
+    1. Remove all animations by reducing delay and duration.
+        - for all browsers | #Opinionated #Accessibility.
+    2. Remove all transitions.
+        - Opinionated, Accessibility | for all browsers.
+    3. Remove all scroll animations.
+        - Opinionated, Accessibility | for all browsers.
+*/
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        -webkit-animation-delay: -1ms !important;
+                animation-delay: -1ms !important;
+        /* 1 */
+        -webkit-animation-duration: 1ms !important;
+                animation-duration: 1ms !important;
+        /* 1 */
+        -webkit-animation-iteration-count: 1 !important;
+                animation-iteration-count: 1 !important;
+        /* 1 */
+        -webkit-transition-delay: 0s !important;
+                transition-delay: 0s !important;
+        /* 2 */
+        -webkit-transition-duration: 0s !important;
+                transition-duration: 0s !important;
+        /* 2 */
+        scroll-behavior: auto !important;
+        /* 3 */
+        background-attachment: initial !important;
+        /* 3 */
+    }
+}
+
+/*
+@media (prefers-color-scheme: light) {
+    :where(:root) {
+        background-color: white;
+        color: black;
+    }
+}
+@media (prefers-color-scheme: dark) {
+    :where(:root) {
+        background-color: black;
+        color: white;
+    }
+}
+*/
+/*
+    Change the cursor on busy elements in all browsers (opinionated).
+*/
+:where([aria-busy="true" i]) {
+  cursor: progress;
+}
+
+/*
+    Change the cursor on control elements in all browsers (opinionated).
+*/
+:where([aria-controls]) {
+  cursor: pointer;
+}
+
+/*
+    Change the cursor on disabled, not-editable, or otherwise
+    inoperable elements in all browsers (opinionated).
+*/
+:where([aria-disabled="true" i], [disabled]) {
+  cursor: not-allowed;
+}
+
+/*
+    Change the display on visually hidden accessible elements
+    in all browsers (opinionated).
+*/
+:where([aria-hidden="false" i][hidden]) {
+  display: initial;
+}
+
+:where([aria-hidden="false" i][hidden]:not(:focus)) {
+  clip: rect(0, 0, 0, 0);
+  position: absolute;
+}

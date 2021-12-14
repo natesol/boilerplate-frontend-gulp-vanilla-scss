@@ -1,0 +1,40 @@
+/* ------------------------------------------------------------------------------------------------ */
+/* --- Light Theme Styles ------------------------------------------------------------------------- */
+
+// default theme
+:root,
+:root[theme="light"] {
+    /* */
+    color-scheme: light;
+
+    /* Colors In Use ------------------ */
+    --success:   var(--emerald);
+    --info:      var(--ocean);
+    --warning:   var(--amber);
+    --danger:    var(--rose);
+    
+    --primary:   var(--aqua);
+    --secondary: var(--indigo);
+    --accent:    var(--gold);
+    
+    --gradient-p-a: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+
+    /*  */
+    --shadow-c: rgb(0 0 0 / 0.1);
+
+    --body-bg-c: var(--gray-01);
+    --body-bg-h: var(--gray-02);
+    --body-txt-c: var(--gray-10);
+
+    --sheet-bg-c: var(--gray-02);
+    --sheet-txt-c: var(--gray-10);
+
+    --title-c: var(--primary);
+
+    --btn-txt-c: var(--white);
+    --btn-bg-c: var(--gradient-p-a);
+}
+
+
+/* ------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------ */

@@ -1,0 +1,39 @@
+/* ------------------------------------------------------------------------------------------------ */
+/* --- App Base Styles ---------------------------------------------------------------------------- */
+
+
+/* --- SCSS Configs ---------------------------------- */
+@import 'variables';
+@import 'functions';
+@import 'mixins';
+
+
+/* --- Assets ---------------------------------------- */
+/**
+ *  external reset file.
+**/
+@import '../assets/baseline-unified.min';
+
+
+/* --- Typography ------------------------------------ */
+/**
+ *  headers & titles: 'Poppins', sans-serif;
+ *  body & main content: 'Open Sans', sans-serif;
+ *  extra content: 'Roboto', sans-serif;
+ *  code: 'Fira Code', monospace; 'JetBrains Mono', monospace; 'Source Code Pro', monospace;
+**/
+// @include google-font {
+//     @include google-font(Poppins, 400 700 900);
+//     @include google-font(Open Sans, 400 700 800);
+//     @include google-font(Roboto, 400 700 900);
+//     @include google-font(Source Code Pro, 400 700);
+// }
+
+
+/* --- Global Styles --------------------------------- */
+@import 'custom-properties';
+@import 'global-styles';
+
+
+/* ------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------ */

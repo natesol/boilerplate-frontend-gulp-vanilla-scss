@@ -1,0 +1,201 @@
+/* ------------------------------------------------------------------------------------------------ */
+/* --- SCSS Mixins -------------------------------------------------------------------------------- */
+
+/* --- Google Fonts SCSS Mixin v.2.0.0 --------------- */
+/**
+ * (https://codepen.io/jakob-e/pen/LVVXjO)
+ * Google Fonts SCSS Mixin - Subset Config.
+**/
+$google-font-subsets: (
+    'arabic': false,
+    'bengali': false,
+    'cyrillic': false,
+    'cyrillic-ext': false,
+    'devanagari': false,
+    'greek': false,
+    'greek-ext': false,
+    'gujarati': false,
+    'hebrew': false,
+    'khmer': false,
+    'latin': false,
+    'latin-ext': false,
+    'tamil': false,
+    'telugu': false,
+    'thai': false,
+    'vietnamese': false,
+) !default;
+/**
+ *  Google Fonts SCSS Mixin.
+**/
+@mixin google-font(
+    $name: null,        // string (unquoted will work too)
+    $weights: 400,      // list or numeric value (100 200 300 400 ...)
+    $styles: normal,    // list or string (normal and or italic)
+    $text: null         // string (don't forget to unescape )
+) {
+    $URL: '//fonts.googleapis.com/css?family=';
+
+    // create global variables.
+    @if not variable-exists(__gf__combine) {
+        $__gf__combine: false !global;
+    }
+    @if not variable-exists(__gf__map) {
+        $__gf__map: () !global;
+    }
+    @if not variable-exists(google-font-subsets) {
+        $google-font-subsets: () !global;
+    }
+
+    // append italic to weights.
+    @if index($styles, italic) and not str-index($weights + '', i) {
+        $wgt: if(index($styles, normal), $weights, ());
+        @each $weight in $weights {
+            $wgt: append($wgt, $weight + i);
+        }
+        $weights: $wgt;
+    }
+
+    // reduce and encode text.
+    @if $text {
+        $list: __gf__list-unique(__gf__str-explode($text));
+        $text: '&text=';
+        $encode: (
+            '!': '%21',
+            '#': '%23',
+            '$': '%24',
+            '&': '%26',
+            "'": '%27',
+            '(': '%28',
+            ')': '%29',
+            '*': '%2A',
+            '+': '%2B',
+            ',': '%2C',
+            '/': '%2F',
+            ':': '%3A',
+            ';': '%3B',
+            '=': '%3D',
+            '?': '%3F',
+            '@': '%40',
+            '[': '%5B',
+            ']': '%5D',
+            ' ': '%20',
+        );
+        @for $i from 1 through length($list) {
+            $char: map-get($encode, nth($list, $i)) or nth($list, $i);
+            $text: $text + $char;
+        }
+    }
+
+    // subsets from config.
+    $subset: '';
+    @each $set, $enabled in $google-font-subsets {
+        @if $enabled {
+            $subset: $subset + if($subset == '', '', ',') + $set;
+        }
+    }
+    $subset: if(str-length($subset) > 0 and $subset != latin, '&subset=' + $subset, '');
+
+    @if $name {
+        // replace name white-spaces.
+        $name: if(type-of($name) == string, unquote($name), $name);
+        $name: __gf__str-replace(inspect($name), ' ', '+');
+        @if $__gf__combine and not $text {
+            // add weights to combine map.
+            $wgt: map-get($__gf__map, $name) or ();
+            $wgt: __gf__list-unique(join($wgt, $weights, comma));
+            $__gf__map: map-merge(
+                $__gf__map,
+                ( $name: $wgt, )
+            ) !global;
+        } @else {
+            // create query.
+            $query: '';
+            @each $weight in $weights {
+                $query: $query + if($query != '', ',', '') + $weight;
+            }
+            $query: __gf__str-replace($query, ' ');
+            $query: $name + if(str-length($query) > 0 and $query != '400', ':' + $query, '');
+
+            // create a single import.
+            @at-root {
+                @import url($URL + $query + if($text, $text, '') + $subset);
+            }
+        }
+    } @else {
+        // set combine flag.
+        $__gf__combine: true !global;
+
+        // nested includes.
+        @content;
+
+        // convert the combine map to a query (and remove weights if just 400).
+        $query: '';
+        @each $font, $weights in $__gf__map {
+            $query: $query +
+                if($query != '', '|', '') +
+                $font +
+                if(
+                    length($weights) == 1 and (nth($weights, 1) == '400'),
+                    '',
+                    ':' + join((), $weights, comma)
+                );
+        }
+        $query: __gf__str-replace($query, ' '); // remove query white-spaces.
+
+        // create a combined import.
+        @at-root {
+            @import url($URL + $query + $subset);
+        }
+        // reset combine flag.
+        $__gf__combine: false !global;
+    }
+}
+
+
+/**
+ *  Media Queries Mixin.
+**/
+@mixin break-point ($key, $sizeValue, $viewPortValue: width) {
+    @if $key == above {
+        $key: min;
+    }
+    @else if $key == below {
+        $key: max;
+    }
+    @else {
+        @error "Property #{$key} must be either 'above' or 'below'.";
+    }
+
+    @if $viewPortValue != width and $viewPortValue != height {
+        @error "Property #{$viewPortValue} must be either 'width' or 'height'.";
+    }
+
+    @media only screen and (#{$key}-#{$viewPortValue}: #{$sizeValue}) {
+        @content;
+    }
+}
+
+/**
+ *  Utility Mixins - Flex Positioning
+**/
+@mixin flex ($direction, $justifyValue) {
+    display: flex;
+    align-items: center;
+    justify-content: $justifyValue;
+    flex-direction: $direction;
+}
+
+/**
+ *  Utility Mixins - Fixed Relative Ratio
+**/
+@mixin spread-down-property ($property, $highestValue, $difference, $selectors...) {
+    @for $i from 0 to length($selectors) {
+        #{nth($selectors, $i + 1)} {
+            #{$property}: #{$highestValue * (1 - ($i * $difference))};
+        }
+    }
+}
+
+
+/* ------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------ */
